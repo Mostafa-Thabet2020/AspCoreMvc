@@ -11,5 +11,6 @@ namespace WebApplication3.Data
         {
         }
         public DbSet<Student> students { get; set; }
+        public DbSet<SchoolClass> schoolClasses { get; set; }
     }
 }

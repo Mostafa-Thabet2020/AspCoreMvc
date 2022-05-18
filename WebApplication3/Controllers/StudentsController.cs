@@ -12,13 +12,13 @@ namespace WebApplication3.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;//
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context)//constractor
         {
             _context = context;
         }
-
+        
         // GET: Students
         public async Task<IActionResult> Index()
         {
@@ -72,7 +72,7 @@ namespace WebApplication3.Controllers
         {
             if (id == null || _context.students == null)
             {
-                return NotFound();
+                return StatusCode(404);
             }
 
             var student = await _context.students.FindAsync(id);

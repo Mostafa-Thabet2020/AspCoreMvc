@@ -26,3 +26,7 @@ body {
     background-color:darkgray !important;
     color:white;
 }
+
+.customLabel{
+    color:brown;
+}

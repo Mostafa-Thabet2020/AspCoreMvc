@@ -6,7 +6,7 @@ namespace WebApplication3.Models
     public class Student
     {
         public int Id { get; set; }
-        [DisplayName("First Name")]
+        [DisplayName("الاسم الأول")]
         [Required(ErrorMessage ="Please insert first name")]
         // [RegularExpression("^[a-zA-Z]\\w{3,14}$",ErrorMessage ="Regex")]
         [EmailAddress (ErrorMessage ="Email is wrong")]
