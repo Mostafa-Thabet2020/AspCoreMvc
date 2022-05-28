@@ -38,5 +38,6 @@ namespace WebApplication3.Controllers
             //ViewBag.Content = new Contant() { Address = "Maadi", Mobile = "0115154" };
             return View(studentVM);
         }
+       
     }
 }

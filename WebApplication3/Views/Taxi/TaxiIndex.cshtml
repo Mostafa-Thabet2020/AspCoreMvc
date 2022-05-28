@@ -1,0 +1,20 @@
+﻿@model List<WebApplication3.ViewModels.TaxiResult>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Taxi Name</th>
+            <th scope="col">Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var taxiRsl in Model)
+        {
+            <tr>
+                <td>@taxiRsl.TaxiName</td>
+                <td>@taxiRsl.Cost</td>
+            </tr>
+        }
+</table>
