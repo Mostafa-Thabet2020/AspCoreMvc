@@ -30,3 +30,7 @@ body {
 .customLabel{
     color:brown;
 }
+
+.container.HeaderTitle {
+    text-align: center;
+}
