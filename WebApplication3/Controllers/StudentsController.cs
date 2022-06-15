@@ -19,12 +19,16 @@ namespace WebApplication3.Controllers
             _context = context;
         }
         
+        public async Task<IActionResult> _GetStudents()
+        {
+            TempData["Students"] =await _context.students.ToListAsync();
+            return View();
+        }
         // GET: Students
         public async Task<IActionResult> Index()
         {
-              return _context.students != null ? 
-                          View(await _context.students.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.students'  is null.");
+            TempData["Students"] = _context.students.ToList();
+            return View();
         }
 
         // GET: Students/Details/5
@@ -48,6 +52,7 @@ namespace WebApplication3.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
+            TempData["Students"] = _context.students.ToList();
             return View();
         }
 
@@ -62,11 +67,21 @@ namespace WebApplication3.Controllers
             {
                 _context.students.Add(student);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["Students"] = _context.students.ToList();
+                 return new JsonResult(new { success = true });
+               // return Ok(student);
             }
             return View(student);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult PostCreate(Student student)
+        {
+            _context.students.Add(student);
+             _context.SaveChanges();
+            TempData["Students"] = _context.students.ToList();
+            return PartialView("_GetStudents");
+        }
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

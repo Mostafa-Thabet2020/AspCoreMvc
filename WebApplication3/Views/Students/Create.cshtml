@@ -10,7 +10,19 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+       <form method="post"
+                          enctype="multipart/form-data"
+                          class="needs-validation"
+                          
+                          data-ajax-url="PostCreate"
+                          data-ajax-success="success"
+                          data-ajax-complete="completed"
+                          data-ajax-failure	="failure"
+                          data-ajax="true"
+                          data-ajax-method="POST"
+                          data-ajax-mode="replace"
+                        data-ajax-update="#StudentIndex"
+                          asp-action="PostCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 @*<label class="control-label">Student name</label>*@
@@ -33,7 +45,27 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<div id="StudentIndex">
+    <partial name="_GetStudents" />
+</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function completed() {
+            alert("Completed");
+            console.log("complete");
+        }
+        function success(response) {
+            alert("success");
+            console.log("response", response);
+        }
+        function failure(response){
+            alert("failure", response);
+        }
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
 }
