@@ -6,6 +6,21 @@
 
 
 $("#TestBtn").click(function () {
-    alert("Function work well");
-    console.log("Called");
+    console.log("Function work well");
+    TestJson();
 });
+
+function TestJson() {
+    console.log("worked");
+    $.ajax({
+        url: "/Students/GetStudentsList",
+        type: "GET",
+        success: function (data) {
+            console.log(data);
+            $("#Header").append(data.firstName+" "+data.lastName);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus);
+        }
+    });
+}

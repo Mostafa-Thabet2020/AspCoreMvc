@@ -9,7 +9,7 @@ namespace WebApplication3.Models
         [DisplayName("الاسم الأول")]
         [Required(ErrorMessage ="Please insert first name")]
         // [RegularExpression("^[a-zA-Z]\\w{3,14}$",ErrorMessage ="Regex")]
-        [EmailAddress (ErrorMessage ="Email is wrong")]
+        //[EmailAddress (ErrorMessage ="Email is wrong")]
         [DataType(DataType.Text,ErrorMessage ="must string")]
         [StringLength(maximumLength:50,ErrorMessage ="Must be at lest 3 and max 50 ",MinimumLength =3)]
         public string FirstName { get; set; }

@@ -18,7 +18,10 @@ namespace WebApplication3.Controllers
         {
             _context = context;
         }
-        
+        public JsonResult GetStudentsList()
+        {
+            return Json(_context.students.FirstOrDefault());
+        }
         public async Task<IActionResult> _GetStudents()
         {
             TempData["Students"] =await _context.students.ToListAsync();
@@ -174,5 +177,6 @@ namespace WebApplication3.Controllers
         {
           return (_context.students?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
     }
 }

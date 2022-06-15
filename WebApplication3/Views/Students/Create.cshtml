@@ -13,37 +13,40 @@
        <form method="post"
                           enctype="multipart/form-data"
                           class="needs-validation"
-                          
                           data-ajax-url="PostCreate"
                           data-ajax-success="success"
                           data-ajax-complete="completed"
                           data-ajax-failure	="failure"
                           data-ajax="true"
                           data-ajax-method="POST"
-                          data-ajax-mode="replace"
-                        data-ajax-update="#StudentIndex"
+                          data-ajax-mode="before"
+                          data-ajax-update="#StudentIndex"
                           asp-action="PostCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 @*<label class="control-label">Student name</label>*@
                 <label asp-for="FirstName" class="customLabel"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <input id="FirstNameTXT" asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <input id="LastNameTXT" asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-5">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="button" onclick="TestJson()" value="Test" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+@*<div>
     <a asp-action="Index">Back to List</a>
+</div>*@
+<div class="pt-3">
+    <h1 id="Header"></h1>
 </div>
 <div id="StudentIndex">
     <partial name="_GetStudents" />
@@ -52,15 +55,17 @@
 @section Scripts {
     <script>
         function completed() {
-            alert("Completed");
+            //alert("Completed");
             console.log("complete");
         }
-        function success(response) {
-            alert("success");
-            console.log("response", response);
+        function success() {
+           
+            console.log("success");
+            $("#FirstNameTXT").val("");
+            $("#LastNameTXT").val("");
         }
         function failure(response){
-            alert("failure", response);
+             console.log("failure", response);
         }
     </script>
     @{
